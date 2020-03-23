@@ -1,5 +1,6 @@
 package sample
 
+import com.google.gson.annotations.SerializedName
 import kotlinx.ast.common.AstSource
 import kotlinx.ast.common.ast.Ast
 import kotlinx.ast.common.print
@@ -11,7 +12,6 @@ fun main() {
     val source = AstSource.File(
         "src/jvmMain/kotlin/sample/Sample.kt"
     )
-
     val kotlinFile = KotlinGrammarAntlrKotlinParser.parseKotlinFile(source)
     kotlinFile.summary()
         .onSuccess { astList ->

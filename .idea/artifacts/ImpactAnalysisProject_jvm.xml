@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="jar" name="ImpactAnalysisProject-jvm">
-    <output-path>C:\Users\Vita\IdeaProjects\ImpactAnalysisProject\build\libs</output-path>
+    <output-path>$PROJECT_DIR$/build/libs</output-path>
     <root id="archive" name="ImpactAnalysisProject-jvm.jar">
       <element id="module-output" name="ImpactAnalysisProject.jvmMain" />
     </root>
