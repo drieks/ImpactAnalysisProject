@@ -1,6 +1,5 @@
 package sample
 
-import com.google.gson.annotations.SerializedName
 import kotlinx.ast.common.AstSource
 import kotlinx.ast.common.ast.Ast
 import kotlinx.ast.common.print
