@@ -1,9 +1,14 @@
 plugins {
     id 'org.jetbrains.kotlin.multiplatform' version '1.3.61'
+    id 'com.github.johnrengelman.shadow' version '5.2.0'
 }
 
 repositories {
     mavenCentral()
+    // required to fix
+    // 'Could not find com.soywiz.korlibs.korio:korio-jvm:1.8.1'
+    // (this is a dependency of antlr-kotlin)
+    jcenter()
     maven { url 'https://www.jitpack.io' }
 }
 
@@ -41,7 +46,22 @@ kotlin {
         }
         commonTest {
         }
+        jvmMain {
+            dependencies {
+                api 'com.github.kotlinx.ast:grammar-kotlin-parser-antlr-kotlin-jvm:5db757217c'
+            }
+        }
     }
+}
+
+task buildJar(type: com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar) {
+    manifest {
+        attributes 'Main-Class': 'sample.MainKt'
+    }
+    def target = kotlin.targets.jvm
+    from target.compilations.main.output
+    def runtimeClasspath = target.compilations.main.runtimeDependencyFiles
+    configurations = [runtimeClasspath]
 }
 
 // Use the following Gradle tasks to run your application:
